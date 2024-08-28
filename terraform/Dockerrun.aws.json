@@ -1,0 +1,15 @@
+{
+  "AWSEBDockerrunVersion" : "1",
+  "Image" : {
+    "Name" : "753493924839.dkr.ecr.eu-west-2.amazonaws.com/beanstalk-poc:latest",
+    "Update" : "true"
+  },
+  "Ports" : [
+    {
+      "ContainerPort" : "8000",
+      "HostPort" : "8000"
+    }
+  ],
+  "Entrypoint" : "",
+  "Command" : "npm run start"
+}

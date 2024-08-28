@@ -15,9 +15,10 @@ resource "aws_elastic_beanstalk_environment" "env" {
   application            = aws_elastic_beanstalk_application.app.name
   name                   = var.app_name
   version_label          = aws_elastic_beanstalk_application_version.app_version.name
-  solution_stack_name    = "64bit Amazon Linux 2023 v4.0.1 running Docker"
+  platform_arn = "arn:aws:elasticbeanstalk:eu-west-2::platform/Docker running on 64bit Amazon Linux 2/4.0.1"
   tier                   = "WebServer"
   wait_for_ready_timeout = "10m"
+
   setting {
     name      = "InstancePort"
     namespace = "aws:cloudformation:template:parameter"
@@ -45,9 +46,9 @@ resource "aws_elastic_beanstalk_environment" "env" {
     namespace = "aws:ec2:vpc"
     value     = join(",", var.public_subnet_ids)
   }
-  setting {
-    name      = "SSLCertificateId"
-    namespace = "aws:elb:loadbalancer"
-    value     = aws_acm_certificate.cert.certificate_id
-  }
+#   setting {
+#     name      = "SSLCertificateId"
+#     namespace = "aws:elb:loadbalancer"
+#     value     = aws_acm_certificate.cert.id
+#   }
 }

@@ -38,6 +38,6 @@ resource "aws_iam_role_policy_attachment" "ecr" {
 }
 
 resource "aws_iam_instance_profile" "beanstalk_iam_instance_profile" {
-  name = "${local.app_name}-beanstalk-iam-instance-profile"
+  name = "${var.app_name}-beanstalk-iam-instance-profile"
   role = aws_iam_role.ebs.name
 }
